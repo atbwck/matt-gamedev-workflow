@@ -1,0 +1,2 @@
+# Keep analyzer cache outside generated skills; lint rules remain the defaults.
+cache-dir = ".build/ruff-cache"

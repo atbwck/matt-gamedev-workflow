@@ -1,0 +1,5 @@
+# Game adaptation: tdd
+
+Keep agreed public behavior seams, independent expected values, red before green, and one vertical slice at a time. This edition retains Matt's current rule that structural refactoring happens at review. Game seams can be pure deterministic rules, scene/map fixtures, save/load, RPC authority or a rendered player scenario. Route the engine-facing part: when a seam is engine behavior rather than pure logic, load the selected engine's `*-testing` (and `*-runtime-safety` for lifetime/async/thread work) through `router` and use that skill's real invocation and report contract. Reuse existing engine runners. Keep rendered/feel observations separate from automated assertions; missing runtime access is a coverage gap. Do not repeatedly ask for a seam already agreed.
+
+Read [shared game policy](../../references/game-workflow/game-policy.md) for host loading, permissions, engine evidence and verification boundaries. This note records a local adaptation; all original sibling resources remain bundled.

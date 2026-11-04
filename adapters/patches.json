@@ -1,0 +1,382 @@
+[
+  {
+    "file": "skills/grill-with-docs/SKILL.md",
+    "edits": [
+      {
+        "oldText": "Call the Skill tool twice, for \"grilling\" and \"domain-modeling\".",
+        "newText": "Load and follow both \"grilling\" and \"domain-modeling\" through the host's discovered skill loader, or read their actual installed SKILL.md files and required resources. Keep both disciplines active throughout the conversation.",
+        "expectedMatches": 1
+      }
+    ]
+  },
+  {
+    "file": "skills/grill-me/SKILL.md",
+    "edits": [
+      {
+        "oldText": "Call the Skill tool with \"grilling\".",
+        "newText": "Load \"grilling\" through the actual host skill loader, or read its discovered SKILL.md, and follow it.",
+        "expectedMatches": 1
+      }
+    ]
+  },
+  {
+    "file": "skills/implement/SKILL.md",
+    "edits": [
+      {
+        "oldText": "Commit your work to the current branch.",
+        "newText": "Commit to the intended branch only when the user's task authorizes committing. Otherwise leave a reviewable diff, report the checks and uncommitted state, and stop at the requested scope.",
+        "expectedMatches": 1
+      },
+      {
+        "oldText": "Run typechecking regularly, single test files regularly, and the full test suite once at the end.",
+        "newText": "Use the project's existing compiler/static checks and focused behavior tests during implementation. Run the applicable regression suite at the task gate. Consult the selected engine testing and runtime-safety skills for scene, asset, cook/export and player evidence; place expensive runs at the agreed stage and report unavailable gates.",
+        "expectedMatches": 1
+      }
+    ]
+  },
+  {
+    "file": "skills/implement-spec/SKILL.md",
+    "edits": [
+      {
+        "oldText": "   - confirms its worktree is based on the integration branch before starting, and resets onto it if not;",
+        "newText": "   - confirms a clean task-owned worktree is based on the integration branch; if not, create a correct isolated worktree without resetting or discarding user changes;",
+        "expectedMatches": 1
+      },
+      {
+        "oldText": "9. Clean up all **implementer subagent** worktrees.",
+        "newText": "9. Clean up only task-owned implementer worktrees whose changes are integrated and preserved. Keep dirty or unresolved worktrees and report their paths.",
+        "expectedMatches": 1
+      }
+    ]
+  },
+  {
+    "file": "skills/research/SKILL.md",
+    "edits": [
+      {
+        "oldText": "Spin up a **background agent** to do the research, so you keep working while it reads. Start it with a fresh context window.",
+        "newText": "Use a real host-native background research agent with a fresh context when available and useful. If already acting as a worker, do the assigned reading yourself and return the result without delegating again. If background execution or isolation is unavailable, research inline and state that limitation; do not invent a background run.",
+        "expectedMatches": 1
+      }
+    ]
+  },
+  {
+    "file": "skills/tdd/SKILL.md",
+    "edits": [
+      {
+        "oldText": "**Test only at pre-agreed seams.** Before writing any test, write down the seams under test and confirm them with the user. No test is written at an unconfirmed seam. You can't test everything, so agreeing the seams up front is how testing effort lands on the critical paths and complex logic instead of every edge case.",
+        "newText": "**Test only at pre-agreed seams.** Read seams already agreed in the spec, tickets or project rules and reuse them. For a new or materially changed seam, write down the boundary and obtain the needed user decision before tests. Do not repeat an already settled confirmation. In games, distinguish pure rules, scene/map/prefab, persistence/authority, and player/rendered boundaries; use the existing runner and preserve evidence for the layer actually exercised.",
+        "expectedMatches": 1
+      }
+    ]
+  },
+  {
+    "file": "skills/prototype/SKILL.md",
+    "edits": [
+      {
+        "oldText": "- **\"Does this logic / state model feel right?\"** → [LOGIC.md](LOGIC.md). Build a single shareable HTML file (free-play buttons plus tabbed guided walkthroughs) that pushes the state machine through cases that are hard to reason about on paper, and that a non-developer can drive.",
+        "newText": "- **\"Does this logic / state model feel right?\"** → use a minimal engine or pure-logic harness for runtime-dependent behavior. For a deliberately engine-independent state-machine discussion, [LOGIC.md](LOGIC.md) supplies an optional single-file HTML illustration; label it as a model, with no engine-validation claim.",
+        "expectedMatches": 1
+      },
+      {
+        "oldText": "- **\"What should this look like?\"** → [UI.md](UI.md). Generate several radically different UI variations on a single route, switchable via a URL search param and a floating bottom bar.",
+        "newText": "- **\"What should this look or feel like in the game?\"** → use the existing engine scene/map and relevant HUD, camera, input or rendering path. Explore meaningful variants with a cheap in-engine switch. [UI.md](UI.md) remains an optional browser sketch guide for an explicitly engine-independent visual concept.",
+        "expectedMatches": 1
+      },
+      {
+        "oldText": "The two branches produce very different artifacts, so getting this wrong wastes the whole prototype. If the question is genuinely ambiguous and the user isn't reachable, default to whichever branch better matches the surrounding code (a backend module → logic; a page or component → UI) and state the assumption at the top of the prototype.",
+        "newText": "Choose fidelity from the question: physics, timing, input feel, rendering, asset loading and networking require the actual engine path. If the user is unavailable, state a reversible assumption grounded in the project; do not decide unapproved gameplay tradeoffs.",
+        "expectedMatches": 1
+      },
+      {
+        "oldText": "2. **Trivial to run.** A UI prototype starts from one command in the project's task runner: `pnpm <name>`, `python <path>`, `bun <path>`, etc. A logic demo is a single HTML file the user double-clicks. Either way, no thinking required to start it.",
+        "newText": "2. **Trivial to run.** Give the actual engine/version, scene/map and project launch command, or the existing logic runner command. Optional HTML sketches are self-contained files. Verify the stated entry and disclose unavailable runtime access.",
+        "expectedMatches": 1
+      },
+      {
+        "oldText": "4. **Skip the polish.** No tests, no error handling beyond what makes the prototype _runnable_, no abstractions. The point is to learn something fast.",
+        "newText": "4. **Skip the polish.** Add only the setup validation, bounded cleanup and repeatable scenario needed to trust the answer; no speculative production architecture. A throwaway prototype is not production-tested code.",
+        "expectedMatches": 1
+      },
+      {
+        "oldText": "6. **Capture it when done.** Fold any validated decision into the real code, then capture the prototype itself as a **primary source**: commit it to a throwaway branch, out of main, and leave a context pointer to that branch on the implementation issue. Capture the answer too (the verdict and the question it settled) in the issue or a commit. The main branch keeps only the validated decision.",
+        "newText": "6. **Capture it when done.** Record the question, verdict, artifact path and evidence limits in the issue or local decision record. Promote the validated decision to real code only within the authorized implementation scope, with production validation. Preserve a prototype branch and commit only when Git actions are authorized; otherwise keep a named local artifact and context pointer.",
+        "expectedMatches": 1
+      }
+    ]
+  },
+  {
+    "file": "skills/wayfinder/SKILL.md",
+    "edits": [
+      {
+        "oldText": "5. **Fire the research subagents.** For each `research` ticket you just created, spin up a subagent with a fresh context window that calls the Skill tool with \"research\" to resolve it in parallel, capturing its findings on a throwaway `research/<name>` branch with a context pointer from the ticket. Push the branch but open no PR: it is never merged.",
+        "newText": "5. **Fire the research subagents.** For ready `research` tickets, use real fresh-context host workers where available; each worker performs the source reading itself and records a cited artifact, without spawning another agent. If unavailable, perform bounded reading inline and disclose the limit. Preserve a local artifact and context pointer. Create or push a throwaway research branch only within scoped Git authorization; research does not authorize a push.",
+        "expectedMatches": 1
+      },
+      {
+        "oldText": "Its body is the question, sized to one 100K token agent session:",
+        "newText": "Its body is the question, sized to one actual host/model session with room for its evidence and resolution; do not assume a fixed token budget:",
+        "expectedMatches": 1
+      }
+    ]
+  },
+  {
+    "file": "skills/diagnosing-bugs/SKILL.md",
+    "edits": [
+      {
+        "oldText": "2. **Curl / HTTP script** against a running dev server.",
+        "newText": "2. **Engine scenario or fixture** against the actual map/scene/player, with the project's machine-readable completion signal.",
+        "expectedMatches": 1
+      },
+      {
+        "oldText": "4. **Headless browser script** (Playwright / Puppeteer) that drives the UI and asserts on DOM/console/network.",
+        "newText": "4. **Engine integration runner** that drives the relevant scene, input, physics or authority path and asserts actual behavior; headless coverage does not prove rendering or GPU behavior.",
+        "expectedMatches": 1
+      },
+      {
+        "oldText": "10. **HITL bash script.** Last resort. If a human must click, drive _them_ with `scripts/hitl-loop.template.sh` so the loop is still structured. Captured output feeds back to you.",
+        "newText": "10. **HITL repro procedure.** If a human must play/click, specify the engine build, scene/save/seed, exact input, expected symptom, deadline and evidence path. Use the bundled bash template only where bash exists; adapt to PowerShell or the existing runner elsewhere.",
+        "expectedMatches": 1
+      },
+      {
+        "oldText": "- [ ] **Fast**: seconds, not minutes.",
+        "newText": "- [ ] **Fast enough for the selected layer**: prefer seconds for logic; use the cheapest reliable engine scenario and state the actual cost rather than dropping required integration evidence.",
+        "expectedMatches": 1
+      },
+      {
+        "oldText": "- [ ] **Agent-runnable**: you can run it unattended; a human in the loop only via `scripts/hitl-loop.template.sh`.",
+        "newText": "- [ ] **Executable with real capabilities**: run unattended when supported; for HITL use a precise repeatable procedure and preserve actual human observations, never simulated input or fabricated passes.",
+        "expectedMatches": 1
+      }
+    ]
+  },
+  {
+    "file": "skills/code-review/SKILL.md",
+    "edits": [
+      {
+        "oldText": "Capture the diff command once: `git diff <fixed-point>...HEAD` (three-dot, so the comparison is against the merge-base). Also note the list of commits via `git log <fixed-point>..HEAD --oneline`.",
+        "newText": "Capture the review scope once. For committed work, use `git diff <fixed-point>...HEAD` and `git log <fixed-point>..HEAD --oneline`. For explicitly requested work-in-progress, also capture staged and unstaged diffs and relevant untracked/config/asset changes against the same base; HEAD-only review misses uncommitted implementation. Pass the same fixed scope to both reviewers.",
+        "expectedMatches": 1
+      },
+      {
+        "oldText": "Both axes run as **parallel sub-agents** so they don't pollute each other's context, then this skill aggregates their findings. Start every sub-agent with a fresh context window.",
+        "newText": "Both axes use separate fresh-context read-only reviewers where the host supports them, then aggregate their findings without merging axes. If already a worker, return the need for independent review to the parent instead of recursively delegating. If isolated reviewers are unavailable, perform explicitly labeled same-context self-review and disclose the independence limit.",
+        "expectedMatches": 1
+      },
+      {
+        "oldText": "### 4. Spawn both sub-agents in parallel",
+        "newText": "### 3a. Resolve the game review context\n\nFor native-game code or asset changes, load `router` from the host's discovered location before dispatching reviewers. Establish the actual subproject, engine/version, changed subsystem and relevant profile. Read the owning engine skills selected by the router (for example `unreal-cpp-gameplay`, `unity-csharp-scripting`, or `godot-nodes-scenes`/`godot-gdscript`) plus the applicable domain skill such as `save-systems`, `input-systems` or `game-ai`. Select only the changed subsystem, not all three engines.\n\nFor lifetime, resource, async, thread, scene or authority changes, also load that engine's `*-runtime-safety`; for test/report changes, load `*-testing`; for performance claims, load `performance-optimization`. Capture an **Engine review packet**: actual skill names and physical paths, engine/version evidence, relevant project constraints, affected invariants, raw test/trace paths and which checks were or were not run.\n\nPass the packet to the Standards reviewer, which must read those skill files and cite the applicable rule and changed code for each engine finding. Give the Spec reviewer only the engine facts and evidence necessary to interpret acceptance; keep the two axes independent. A missing engine skill or unavailable runtime is an explicit coverage gap, not a generic-engine Standards pass. If a skill is not needed, state the scope reason; do not claim it was loaded.\n\n### 4. Spawn both sub-agents in parallel",
+        "expectedMatches": 1
+      },
+      {
+        "oldText": "- The list of standards-source files you found in step 3, **plus the smell baseline from step 3** pasted in full (the sub-agent has no other access to it).",
+        "newText": "- The list of standards-source files you found in step 3, **plus the smell baseline from step 3** pasted in full (the sub-agent has no other access to it).\n- The **Engine review packet** from step 3a when reviewing a native-game change, including actual engine/domain skill paths to read, scoped local runtime/testing guidance and the executed/unavailable evidence. The reviewer reports which skills it actually consulted; do not replace them with a generic game checklist.",
+        "expectedMatches": 1
+      }
+    ]
+  },
+  {
+    "file": "skills/codebase-design/SKILL.md",
+    "edits": [
+      {
+        "oldText": "Use these terms exactly: don't substitute \"component,\" \"service,\" \"API,\" or \"boundary.\" Consistent language is the whole point.",
+        "newText": "Use these terms consistently when discussing this module-design model. Preserve precise engine vocabulary such as ActorComponent, Unity component, Godot Node/Resource, public API and authority boundary when those are the actual concepts; do not rename engine mechanisms merely to fit a generic glossary.",
+        "expectedMatches": 1
+      }
+    ]
+  },
+  {
+    "file": "skills/grilling/SKILL.md",
+    "edits": [
+      {
+        "oldText": "Finding _facts_ is your job, never the user's. When a frontier question needs a fact from the environment (filesystem, tools, etc.), dispatch a sub-agent with a fresh context window to find it; don't ask the user for anything you could look up yourself. Don't block on it: a running exploration is an unsettled prerequisite, so only the questions downstream of it wait for the sub-agent to report; ask the rest of the frontier now. The _decisions_ are the user's: put each to them and wait.",
+        "newText": "Finding _facts_ is your job, never the user's. Look up available project/engine facts directly, or use a fresh-context host worker when useful and permitted; a worker does not delegate again. Do not ask the user for facts you can inspect. A pending exploration is an unsettled prerequisite: only downstream questions wait, and the rest of the frontier can proceed. The _decisions_ are the user's: put unresolved decisions to them and wait. Reuse decisions and scoped authorization already supplied in the session.",
+        "expectedMatches": 1
+      }
+    ]
+  },
+  {
+    "file": "skills/setup-matt-pocock-skills/SKILL.md",
+    "edits": [
+      {
+        "oldText": "A GitHub or GitLab tracker needs a reachable repo. When the user picks one and no `git remote` points at that host, get the repo URL from them and wire it up (`git init` if needed, `git remote add origin <url>`) before going further. Done when `gh repo view` / `glab repo view` prints the project from inside this directory; if it can't, stop and tell the user what's missing.",
+        "newText": "A GitHub or GitLab tracker needs a reachable, verified target repository. Reuse an existing connector or authenticated CLI. If the remote is missing, identify the target from available context; initialize Git or add/change a remote only when that operation is within the user's authorization. Otherwise record the missing connection and offer the local-Markdown path. Never publish into the skill author's repository by accident.",
+        "expectedMatches": 1
+      },
+      {
+        "oldText": "- If `CLAUDE.md` exists, edit it.\n- Else if `AGENTS.md` exists, edit it.\n- If neither exists, ask the user which one to create; don't pick for them.",
+        "newText": "- Use the existing instruction file actually consumed by the selected host. Preserve its surrounding content.\n- When both `CLAUDE.md` and `AGENTS.md` exist, follow the project's canonical-file convention and add a scoped pointer only where needed.\n- If neither exists, resolve the intended host and requested scope before creating a project instruction file; do not change global configuration.",
+        "expectedMatches": 1
+      },
+      {
+        "oldText": "Never create `AGENTS.md` when `CLAUDE.md` already exists (or vice versa); always edit the one that's already there.",
+        "newText": "Avoid duplicate instruction sources. An existing file for another host is not proof it controls the current one; preserve it and use the actual project/host convention.",
+        "expectedMatches": 1
+      }
+    ]
+  },
+  {
+    "file": "skills/setup-matt-pocock-skills/issue-tracker-github.md",
+    "edits": [
+      {
+        "oldText": "Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all operations.",
+        "newText": "Issues and specs for this repo live as GitHub issues. Prefer an available authenticated host connector when it supports the operation; otherwise verify the installed gh CLI, version, account and repository before using the examples below. For multiline bodies use structured tool arguments or a safely written body file, not interpolated shell text.",
+        "expectedMatches": 1
+      }
+    ]
+  },
+  {
+    "file": "skills/setup-matt-pocock-skills/issue-tracker-gitlab.md",
+    "edits": [
+      {
+        "oldText": "Issues and specs for this repo live as GitLab issues. Use the [`glab`](https://gitlab.com/gitlab-org/cli) CLI for all operations.",
+        "newText": "Issues and specs for this repo live as GitLab issues. Prefer an available authenticated host connector when sufficient; otherwise verify the installed [glab](https://gitlab.com/gitlab-org/cli) CLI, account, repository and supported syntax. Use structured arguments or a safely written body file for multiline content.",
+        "expectedMatches": 1
+      }
+    ]
+  },
+  {
+    "file": "skills/setup-matt-pocock-skills/issue-tracker-local.md",
+    "edits": [
+      {
+        "oldText": "- **Child ticket**: `.scratch/<effort>/issues/NN-<slug>.md`, numbered from `01`, with the question in the body. A `Type:` line records the ticket type (`research`/`prototype`/`grilling`/`task`); a `Status:` line records `claimed`/`resolved`.",
+        "newText": "- **Child ticket**: `.scratch/<effort>/issues/NN-<slug>.md`, numbered from `01`, with the question in the body. `Type:` is research/prototype/grilling/task; `Status:` starts open and becomes claimed, resolved, or out-of-scope. Preserve the destination/map link and the reason for scope closure.",
+        "expectedMatches": 1
+      },
+      {
+        "oldText": "- **Claim**: set `Status: claimed` and save before any work.",
+        "newText": "- **Claim**: before work, obtain an exclusive per-ticket claim with a session/owner token using the host's atomic file-creation or tracker-lock primitive, then set Status: claimed. An ordinary overwrite or the same account's assignee is not mutual exclusion. If atomic claims are unavailable, serialize local sessions and state that concurrency is unsupported; never steal an existing claim.",
+        "expectedMatches": 1
+      },
+      {
+        "oldText": "- **Resolve**: append the answer under an `## Answer` heading, set `Status: resolved`, then append a context pointer (gist + link) to the map's Decisions-so-far in `map.md`.",
+        "newText": "- **Resolve**: as the claim owner, save the answer under ## Answer, set Status: resolved, then upsert one map pointer keyed by the ticket path. Serialize map writes under a map lock, reread before updating and use a task-owned temporary file plus atomic rename where supported. On retry repair a missing pointer without duplicating the answer. Close out-of-scope tickets in Out of scope, not Decisions-so-far. Release only your own claim after preserving the resolution.",
+        "expectedMatches": 1
+      },
+      {
+        "oldText": "- **Blocking**: a `Blocked by: NN, NN` line near the top. A ticket is unblocked when every file it lists is `resolved`.",
+        "newText": "- **Blocking**: a Blocked by: NN, NN line near the top. Resolved and out-of-scope are terminal (closed) states; only open/claimed blockers block the frontier. Before closing a blocker as out-of-scope, reconsider each dependent edge: remove an obsolete dependency, or replace a still-needed decision with an explicit in-scope ticket. Closure is not evidence that an unanswered requirement was resolved. A dependent is ready only when all remaining blockers are closed.",
+        "expectedMatches": 1
+      }
+    ]
+  },
+  {
+    "file": "skills/unreal-blueprints/SKILL.md",
+    "edits": [
+      {
+        "oldText": "2. **Use the Construction Script for editor-time setup** (procedural placement, configuring\n   components from variables) — it runs when the actor is placed or edited, *not* during play.",
+        "newText": "2. **Use the Construction Script for construction-time setup** (procedural placement, configuring\n   components from variables). It runs when an actor is placed or edited **and when an actor is\n   spawned during play** (`SpawnActor` → `ExecuteConstruction` → `OnConstruction`). Keep runtime-only\n   state, gameplay side effects, and dependencies on a fully begun world in `BeginPlay`, not the\n   Construction Script; verify the lifecycle for the project's UE version.",
+        "expectedMatches": 1
+      },
+      {
+        "oldText": "- **Construction Script doing gameplay** — it runs in the editor on edit/placement; spawning\n  gameplay actors or starting logic there causes editor-only artifacts. Init in BeginPlay.",
+        "newText": "- **Construction Script doing gameplay**: construction can rerun in the editor and also occurs for runtime-spawned actors. Keep it idempotent and construction-scoped; put play/session side effects in the appropriate BeginPlay or explicit start path, and test the actual spawn lifecycle.",
+        "expectedMatches": 1
+      }
+    ]
+  },
+  {
+    "file": "skills/unreal-cpp-gameplay/SKILL.md",
+    "edits": [
+      {
+        "oldText": "7. **Verify** by compiling (Live Coding `Ctrl+Alt+F11` from the editor, or a full build from\n   the IDE with the editor closed) and checking the class/properties appear in the editor. For\n   automation tests, run headless with\n   `UnrealEditor-Cmd <Project>.uproject -ExecCmds=\"Automation RunTest MyGame;Quit\"`\n   (`RunTest` takes a test name, a dotted prefix, or `Group:<name>`).",
+        "newText": "7. **Verify** by compiling (Live Coding `Ctrl+Alt+F11` from the editor, or a full build from\n   the IDE with the editor closed) and checking the class/properties appear in the editor. A\n   headless automation run is not a generic one-liner: confirm the filter, report location and exit\n   behavior for the installed UE version, and use the `unreal-testing` skill for the layered test\n   and packaged-smoke workflow. A command that merely exits after printing logs is not proof that\n   tests ran.",
+        "expectedMatches": 1
+      }
+    ]
+  },
+  {
+    "file": "skills/godot-gdscript-headless-testing/SKILL.md",
+    "edits": [
+      {
+        "oldText": "```gdscript\n# res://test_runner.gd — run with:\n#   godot --headless --path . --script res://test_runner.gd\nextends SceneTree\n\nvar passed := 0\nvar failed := 0\n\nfunc _initialize() -> void:\n    test_add()\n    print(\"Results: %d passed, %d failed\" % [passed, failed])\n    quit(1 if failed > 0 else 0)   # non-zero exit fails the CI step\n\nfunc assert_eq(actual, expected, label: String) -> void:\n    if actual == expected:\n        passed += 1\n    else:\n        failed += 1\n        push_error(\"FAIL %s: expected %s, got %s\" % [label, expected, actual])\n\nfunc test_add() -> void:\n    assert_eq(2 + 2, 4, \"test_add\")\n```",
+        "newText": "```gdscript\n# res://test_runner.gd: use the actual project Godot version.\nextends SceneTree\n\nconst TESTS: Array[String] = [\"test_add\"]\nvar passed := 0\nvar failed := 0\n\nfunc _initialize() -> void:\n    var completed := 0\n    if TESTS.is_empty():\n        failed += 1\n        push_error(\"No required tests selected\")\n    for test_name: String in TESTS:\n        var assertions_before := passed + failed\n        if call(test_name) != true:\n            failed += 1\n            push_error(\"FAIL %s: did not finish (runtime error?)\" % test_name)\n        elif passed + failed == assertions_before:\n            failed += 1\n            push_error(\"FAIL %s: completed without an assertion\" % test_name)\n        else:\n            completed += 1\n    print(\"Results: %d passed assertions, %d failures; %d/%d tests completed\" % [passed, failed, completed, TESTS.size()])\n    quit(1 if failed > 0 or completed != TESTS.size() else 0)\n\nfunc assert_eq(actual, expected, label: String) -> void:\n    if actual == expected:\n        passed += 1\n    else:\n        failed += 1\n        push_error(\"FAIL %s: expected %s, got %s\" % [label, expected, actual])\n\nfunc test_add() -> bool:\n    assert_eq(2 + 2, 4, \"test_add\")\n    return true  # only normal completion can return true\n```",
+        "expectedMatches": 1
+      },
+      {
+        "oldText": "```gdscript\nextends SceneTree\n\nvar passed := 0\nvar failed := 0\n\nfunc _initialize() -> void:\n    await run_tests()\n    print(\"Results: %d passed, %d failed\" % [passed, failed])\n    quit(1 if failed > 0 else 0)   # track and report failures here too\n\nfunc assert_eq(actual, expected, label: String) -> void:\n    if actual == expected:\n        passed += 1\n    else:\n        failed += 1\n        push_error(\"FAIL %s: expected %s, got %s\" % [label, expected, actual])\n\nfunc run_tests() -> void:\n    # `root` is not inside the tree yet during _initialize(): a Timer started now\n    # errors (\"not inside the tree\") and its `timeout` never fires. Wait one frame.\n    await process_frame\n    var timer_node := Timer.new()\n    timer_node.one_shot = true   # default Timer restarts after timeout\n    root.add_child(timer_node)\n    timer_node.start(0.1)\n    await timer_node.timeout\n    # assertions here can rely on the node having been in the tree for a frame\n    assert_eq(timer_node.is_stopped(), true, \"timer_fires_once\")\n    timer_node.queue_free()\n```",
+        "newText": "```gdscript\nextends SceneTree\n\nconst TESTS: Array[String] = [\"test_timer\"]\n# Illustrative test deadline: replace with the project-agreed bound.\nconst TEST_TIMEOUT_SECONDS := 5.0\nvar passed := 0\nvar failed := 0\n\nfunc _initialize() -> void:\n    call_deferred(\"run_suite\")\n\nfunc run_suite() -> void:\n    await process_frame\n    var completed := 0\n    if TESTS.is_empty():\n        failed += 1\n        push_error(\"No required tests selected\")\n    for test_name: String in TESTS:\n        var watchdog := Timer.new()\n        watchdog.one_shot = true\n        root.add_child(watchdog)\n        watchdog.timeout.connect(func() -> void:\n            failed += 1\n            push_error(\"Required test did not complete before its deadline\")\n            quit(1)\n        )\n        watchdog.start(TEST_TIMEOUT_SECONDS)\n        var assertions_before := passed + failed\n        var finished = await call(test_name)\n        watchdog.stop()\n        watchdog.queue_free()\n        if finished != true:\n            failed += 1\n            push_error(\"FAIL %s: did not finish (runtime error?)\" % test_name)\n        elif passed + failed == assertions_before:\n            failed += 1\n            push_error(\"FAIL %s: completed without an assertion\" % test_name)\n        else:\n            completed += 1\n    print(\"Results: %d passed assertions, %d failures; %d/%d tests completed\" % [passed, failed, completed, TESTS.size()])\n    quit(1 if failed > 0 or completed != TESTS.size() else 0)\n\nfunc assert_eq(actual, expected, label: String) -> void:\n    if actual == expected:\n        passed += 1\n    else:\n        failed += 1\n        push_error(\"FAIL %s: expected %s, got %s\" % [label, expected, actual])\n\nfunc test_timer() -> bool:\n    await process_frame\n    var timer_node := Timer.new()\n    timer_node.one_shot = true\n    root.add_child(timer_node)\n    timer_node.start(0.1)\n    await timer_node.timeout\n    assert_eq(timer_node.is_stopped(), true, \"timer_fires_once\")\n    timer_node.queue_free()\n    return true\n```",
+        "expectedMatches": 1
+      },
+      {
+        "oldText": "Verified against Godot 4.7.2: `godot --headless --path . --script\nres://test_runner.gd` prints `Results: N passed, M failed` to stdout, routes\n`push_error` lines to stderr, and returns process exit code `0` when\n`failed == 0`, `1` otherwise.",
+        "newText": "Local amendment: completion must be explicit, required test selection must be nonempty, and runtime-aborted tests must fail even when no assertion recorded a failure. These amended snippets have not been executed against a Godot engine in this delivery. Validate them on the project version with a clean test, a failed assertion, a runtime error, an empty selection and an interrupted/timeout case before using them as an enforced gate.",
+        "expectedMatches": 1
+      }
+    ]
+  },
+  {
+    "file": "skills/godot-nodes-scenes/scripts/check_godot_project.py",
+    "edits": [
+      {
+        "oldText": "#!/usr/bin/env python3",
+        "newText": "#!/usr/bin/env python3\n# Local modification: type narrowing, explicit regex flags and safe stream capability checks.\n# Original Apache-2.0/NOTICE retained; see the distribution ADAPTATIONS.md.",
+        "expectedMatches": 1
+      },
+      {
+        "oldText": "    if text.startswith(\"\\ufeff\"):\n        text = text[1:]",
+        "newText": "    text = text.removeprefix(\"\\ufeff\")",
+        "expectedMatches": 1
+      },
+      {
+        "oldText": "    if body.startswith(\"[\"):\n        body = body[1:]\n    if body.endswith(\"]\"):\n        body = body[:-1]",
+        "newText": "    body = body.removeprefix(\"[\").removesuffix(\"]\")",
+        "expectedMatches": 1
+      },
+      {
+        "oldText": "        if value.startswith(\"./\"):\n            value = value[2:]",
+        "newText": "        value = value.removeprefix(\"./\")",
+        "expectedMatches": 1
+      },
+      {
+        "oldText": "                m = re.search(r'^uid=\"(uid://[^\"]+)\"', text, re.M)",
+        "newText": "                m = re.search(r'^uid=\"(uid://[^\"]+)\"', text, re.MULTILINE)",
+        "expectedMatches": 1
+      },
+      {
+        "oldText": "                dest = re.search(r\"^dest_files=\\[(.*)\\]\\s*$\", text, re.M)",
+        "newText": "                dest = re.search(r\"^dest_files=\\[(.*)\\]\\s*$\", text, re.MULTILINE)",
+        "expectedMatches": 1
+      },
+      {
+        "oldText": "        if re.search(r\"^config/use_hidden_project_data_directory\\s*=\\s*false\\s*$\", text, re.M):",
+        "newText": "        if re.search(r\"^config/use_hidden_project_data_directory\\s*=\\s*false\\s*$\", text, re.MULTILINE):",
+        "expectedMatches": 1
+      },
+      {
+        "oldText": "        if hasattr(stream, \"reconfigure\"):\n            stream.reconfigure(errors=\"backslashreplace\")",
+        "newText": "        reconfigure = getattr(stream, \"reconfigure\", None)\n        if callable(reconfigure):\n            reconfigure(errors=\"backslashreplace\")",
+        "expectedMatches": 1
+      }
+    ]
+  },
+  {
+    "file": "skills/unity-csharp-scripting/scripts/check_unity_project.py",
+    "edits": [
+      {
+        "oldText": "#!/usr/bin/env python3",
+        "newText": "#!/usr/bin/env python3\n# Local modification: type narrowing, explicit regex flags and safe stream capability checks.\n# Original Apache-2.0/NOTICE retained; see the distribution ADAPTATIONS.md.",
+        "expectedMatches": 1
+      },
+      {
+        "oldText": "from dataclasses import dataclass, field\nfrom pathlib import Path\nfrom typing import Callable",
+        "newText": "from collections.abc import Callable\nfrom dataclasses import dataclass, field\nfrom pathlib import Path",
+        "expectedMatches": 1
+      },
+      {
+        "oldText": "    re.S,",
+        "newText": "    re.DOTALL,",
+        "expectedMatches": 1
+      },
+      {
+        "oldText": "                package_name = data.get(\"name\") if isinstance(data.get(\"name\"), str) else name\n                result.embedded[package_name] = packages_dir / name",
+        "newText": "                package_name = data.get(\"name\")\n                if not isinstance(package_name, str):\n                    package_name = name\n                result.embedded[package_name] = packages_dir / name",
+        "expectedMatches": 1
+      },
+      {
+        "oldText": "        if hasattr(stream, \"reconfigure\"):\n            stream.reconfigure(errors=\"replace\")  # non-ASCII paths on a legacy Windows console",
+        "newText": "        reconfigure = getattr(stream, \"reconfigure\", None)\n        if callable(reconfigure):\n            reconfigure(errors=\"replace\")  # non-ASCII paths on a legacy Windows console",
+        "expectedMatches": 1
+      }
+    ]
+  }
+]

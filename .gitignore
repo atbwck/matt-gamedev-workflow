@@ -1,0 +1,17 @@
+upstream/
+.build/
+.validation/
+artifacts/
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+.ruff_cache/
+*.log
+.env
+.env.*
+!.env.example
+!.env.sample
+.matt-gamedev-workflow-stage-*/
+.matt-gamedev-workflow-backups/

@@ -1,0 +1,5 @@
+# Game adaptation: diagnosing-bugs
+
+Build a red-capable loop against the real game symptom, then minimize, hypothesize, instrument, fix and regress. Choose a deterministic scene/save/seed/replay, engine test or actual player path. Route by symptom: load the engine's `*-testing` for failing suites, `*-runtime-safety` for lifetime/teardown/thread defects, `performance-optimization` for frame/load/memory regressions, and the relevant domain skill (for example `save-systems`) when the bug crosses that subsystem. Use engine traces, crash dumps/symbols and ownership evidence. Avoid per-frame log floods. Keep unavailable GPU/device paths explicit. The bundled bash HITL template is optional; PowerShell or an exact manual scenario can carry the same observations. User /debug is an explicit alias.
+
+Read [shared game policy](../../references/game-workflow/game-policy.md) for host loading, permissions, engine evidence and verification boundaries. This note records a local adaptation; all original sibling resources remain bundled.

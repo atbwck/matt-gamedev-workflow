@@ -1,0 +1,247 @@
+{
+  "schema": 1,
+  "reviewedCommit": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
+  "skills": [
+    {
+      "name": "ask-matt",
+      "sourcePath": "skills/engineering/ask-matt",
+      "files": [
+        "PHASE-BOUNDARIES.md",
+        "SKILL.md",
+        "agents/openai.yaml"
+      ]
+    },
+    {
+      "name": "code-review",
+      "sourcePath": "skills/engineering/code-review",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ]
+    },
+    {
+      "name": "codebase-design",
+      "sourcePath": "skills/engineering/codebase-design",
+      "files": [
+        "DEEPENING.md",
+        "DESIGN-IT-TWICE.md",
+        "SKILL.md",
+        "agents/openai.yaml"
+      ]
+    },
+    {
+      "name": "diagnosing-bugs",
+      "sourcePath": "skills/engineering/diagnosing-bugs",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "scripts/hitl-loop.template.sh"
+      ]
+    },
+    {
+      "name": "domain-modeling",
+      "sourcePath": "skills/engineering/domain-modeling",
+      "files": [
+        "ADR-FORMAT.md",
+        "GLOSSARY-FORMAT.md",
+        "SKILL.md",
+        "agents/openai.yaml"
+      ]
+    },
+    {
+      "name": "grill-me",
+      "sourcePath": "skills/productivity/grill-me",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ]
+    },
+    {
+      "name": "grill-with-docs",
+      "sourcePath": "skills/engineering/grill-with-docs",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ]
+    },
+    {
+      "name": "grilling",
+      "sourcePath": "skills/productivity/grilling",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ]
+    },
+    {
+      "name": "handoff",
+      "sourcePath": "skills/productivity/handoff",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ]
+    },
+    {
+      "name": "implement",
+      "sourcePath": "skills/engineering/implement",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ]
+    },
+    {
+      "name": "implement-spec",
+      "sourcePath": "skills/engineering/implement-spec",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ]
+    },
+    {
+      "name": "improve-codebase-architecture",
+      "sourcePath": "skills/engineering/improve-codebase-architecture",
+      "files": [
+        "HTML-REPORT.md",
+        "SKILL.md",
+        "agents/openai.yaml"
+      ]
+    },
+    {
+      "name": "pr",
+      "sourcePath": "skills/engineering/pr",
+      "files": [
+        "CREDITS.md",
+        "SKILL.md",
+        "agents/openai.yaml"
+      ]
+    },
+    {
+      "name": "prototype",
+      "sourcePath": "skills/engineering/prototype",
+      "files": [
+        "LOGIC.md",
+        "SKILL.md",
+        "UI.md",
+        "agents/openai.yaml"
+      ]
+    },
+    {
+      "name": "research",
+      "sourcePath": "skills/engineering/research",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ]
+    },
+    {
+      "name": "retro",
+      "sourcePath": "skills/engineering/retro",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ]
+    },
+    {
+      "name": "setup-matt-pocock-skills",
+      "sourcePath": "skills/engineering/setup-matt-pocock-skills",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "domain.md",
+        "issue-tracker-github.md",
+        "issue-tracker-gitlab.md",
+        "issue-tracker-local.md",
+        "triage-labels.md"
+      ]
+    },
+    {
+      "name": "tdd",
+      "sourcePath": "skills/engineering/tdd",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "mocking.md",
+        "tests.md"
+      ]
+    },
+    {
+      "name": "teach",
+      "sourcePath": "skills/productivity/teach",
+      "files": [
+        "GLOSSARY-FORMAT.md",
+        "LEARNING-RECORD-FORMAT.md",
+        "MISSION-FORMAT.md",
+        "RESOURCES-FORMAT.md",
+        "SKILL.md",
+        "agents/openai.yaml"
+      ]
+    },
+    {
+      "name": "to-questionnaire",
+      "sourcePath": "skills/productivity/to-questionnaire",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ]
+    },
+    {
+      "name": "to-spec",
+      "sourcePath": "skills/engineering/to-spec",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ]
+    },
+    {
+      "name": "to-tickets",
+      "sourcePath": "skills/engineering/to-tickets",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ]
+    },
+    {
+      "name": "triage",
+      "sourcePath": "skills/engineering/triage",
+      "files": [
+        "AGENT-BRIEF.md",
+        "OUT-OF-SCOPE.md",
+        "SKILL.md",
+        "agents/openai.yaml"
+      ]
+    },
+    {
+      "name": "wait-what",
+      "sourcePath": "skills/productivity/wait-what",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ]
+    },
+    {
+      "name": "wayfinder",
+      "sourcePath": "skills/engineering/wayfinder",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ]
+    },
+    {
+      "name": "wizard",
+      "sourcePath": "skills/engineering/wizard",
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "template.sh"
+      ]
+    },
+    {
+      "name": "writing-for-agents",
+      "sourcePath": "skills/productivity/writing-for-agents",
+      "files": [
+        "SKILL-MECHANICS.md",
+        "SKILL.md",
+        "agents/openai.yaml"
+      ]
+    }
+  ]
+}

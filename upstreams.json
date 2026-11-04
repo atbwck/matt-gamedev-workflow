@@ -1,0 +1,305 @@
+{
+  "schema": 1,
+  "repositories": {
+    "matt": {
+      "url": "https://github.com/mattpocock/skills.git",
+      "commit": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
+      "branch": "main",
+      "skillsRoot": "skills",
+      "discover": "recursive",
+      "groups": [
+        "engineering",
+        "productivity"
+      ]
+    },
+    "gamedev": {
+      "url": "https://github.com/gamedev-skills/awesome-gamedev-agent-skills.git",
+      "commit": "19d93f97c9c1ea0f8b306e77aa81e0d3e352d3e9",
+      "branch": "main",
+      "skillsRoot": "skills",
+      "categories": [
+        "unreal",
+        "unity",
+        "godot"
+      ],
+      "skills": [
+        "disciplines/create-game-assets",
+        "disciplines/game-ai",
+        "disciplines/ai-behavior-trees-utility-ai",
+        "disciplines/procedural-gen",
+        "disciplines/dialogue-systems",
+        "disciplines/save-systems",
+        "disciplines/audio-design",
+        "disciplines/shader-programming",
+        "disciplines/physics-tuning",
+        "disciplines/level-design",
+        "disciplines/input-systems",
+        "disciplines/game-feel",
+        "disciplines/game-ui-ux",
+        "disciplines/camera-systems"
+      ]
+    }
+  },
+  "localSkills": [
+    {
+      "name": "constraint-driven-development",
+      "source": "adapters/constraint-driven-development",
+      "category": "core"
+    },
+    {
+      "name": "doubt-driven-development",
+      "source": "adapters/doubt-driven-development",
+      "category": "core"
+    },
+    {
+      "name": "performance-optimization",
+      "source": "adapters/performance-optimization",
+      "category": "core"
+    },
+    {
+      "name": "unreal-testing",
+      "source": "adapters/unreal-testing",
+      "category": "unreal",
+      "requires": [
+        "unreal-runtime-safety"
+      ]
+    },
+    {
+      "name": "unreal-runtime-safety",
+      "source": "adapters/unreal-runtime-safety",
+      "category": "unreal",
+      "requires": [
+        "unreal-testing"
+      ]
+    },
+    {
+      "name": "unity-testing",
+      "source": "adapters/unity-testing",
+      "category": "unity",
+      "requires": [
+        "unity-runtime-safety"
+      ]
+    },
+    {
+      "name": "unity-runtime-safety",
+      "source": "adapters/unity-runtime-safety",
+      "category": "unity",
+      "requires": [
+        "unity-testing"
+      ]
+    },
+    {
+      "name": "godot-testing",
+      "source": "adapters/godot-testing",
+      "category": "godot",
+      "requires": [
+        "godot-runtime-safety",
+        "godot-gdscript-headless-testing"
+      ]
+    },
+    {
+      "name": "godot-runtime-safety",
+      "source": "adapters/godot-runtime-safety",
+      "category": "godot",
+      "requires": [
+        "godot-testing"
+      ]
+    },
+    {
+      "name": "security-and-hardening",
+      "source": "adapters/security-and-hardening",
+      "category": "core"
+    },
+    {
+      "name": "observability-and-instrumentation",
+      "source": "adapters/observability-and-instrumentation",
+      "category": "core"
+    },
+    {
+      "name": "ci-cd-and-automation",
+      "source": "adapters/ci-cd-and-automation",
+      "category": "core"
+    },
+    {
+      "name": "game-production-workflow",
+      "source": "adapters/game-production-workflow",
+      "category": "core",
+      "requires": [
+        "router",
+        "grill-with-docs",
+        "wayfinder",
+        "tdd",
+        "code-review",
+        "constraint-driven-development",
+        "performance-optimization"
+      ]
+    },
+    {
+      "name": "router",
+      "source": "adapters/router",
+      "category": "core"
+    },
+    {
+      "name": "spec",
+      "source": "adapters/spec",
+      "category": "core",
+      "requires": [
+        "to-spec"
+      ]
+    },
+    {
+      "name": "game-plan",
+      "source": "adapters/game-plan",
+      "category": "core",
+      "requires": [
+        "to-tickets"
+      ]
+    },
+    {
+      "name": "build",
+      "source": "adapters/build",
+      "category": "core",
+      "requires": [
+        "implement"
+      ]
+    },
+    {
+      "name": "debug",
+      "source": "adapters/debug",
+      "category": "core",
+      "requires": [
+        "diagnosing-bugs"
+      ]
+    },
+    {
+      "name": "game-review",
+      "source": "adapters/game-review",
+      "category": "core",
+      "requires": [
+        "code-review"
+      ]
+    },
+    {
+      "name": "perf",
+      "source": "adapters/perf",
+      "category": "core",
+      "requires": [
+        "performance-optimization"
+      ]
+    },
+    {
+      "name": "constraints",
+      "source": "adapters/constraints",
+      "category": "core",
+      "requires": [
+        "constraint-driven-development"
+      ]
+    },
+    {
+      "name": "test",
+      "source": "adapters/test",
+      "category": "core"
+    }
+  ],
+  "patches": "adapters/patches.json",
+  "sharedReferences": "adapters/shared-references",
+  "notes": "adapters/notes",
+  "dependencies": {
+    "grill-with-docs": [
+      "grilling",
+      "domain-modeling"
+    ],
+    "grill-me": [
+      "grilling"
+    ],
+    "wayfinder": [
+      "grilling",
+      "domain-modeling",
+      "prototype",
+      "research"
+    ],
+    "implement": [
+      "tdd",
+      "code-review",
+      "router"
+    ],
+    "implement-spec": [
+      "tdd",
+      "code-review"
+    ],
+    "tdd": [
+      "codebase-design",
+      "router"
+    ],
+    "improve-codebase-architecture": [
+      "codebase-design",
+      "grilling",
+      "domain-modeling"
+    ],
+    "game-production-workflow": [
+      "router",
+      "grill-with-docs",
+      "wayfinder",
+      "tdd",
+      "code-review",
+      "constraint-driven-development",
+      "performance-optimization"
+    ],
+    "spec": [
+      "to-spec"
+    ],
+    "game-plan": [
+      "to-tickets"
+    ],
+    "build": [
+      "implement"
+    ],
+    "debug": [
+      "diagnosing-bugs"
+    ],
+    "game-review": [
+      "code-review"
+    ],
+    "perf": [
+      "performance-optimization"
+    ],
+    "constraints": [
+      "constraint-driven-development"
+    ],
+    "unreal-testing": [
+      "unreal-runtime-safety"
+    ],
+    "unreal-runtime-safety": [
+      "unreal-testing"
+    ],
+    "unity-testing": [
+      "unity-runtime-safety"
+    ],
+    "unity-runtime-safety": [
+      "unity-testing"
+    ],
+    "godot-testing": [
+      "godot-runtime-safety",
+      "godot-gdscript-headless-testing"
+    ],
+    "godot-runtime-safety": [
+      "godot-testing"
+    ],
+    "triage": [
+      "grilling",
+      "domain-modeling"
+    ],
+    "retro": [
+      "writing-for-agents"
+    ],
+    "code-review": [
+      "router"
+    ],
+    "diagnosing-bugs": [
+      "router"
+    ],
+    "ask-matt": [
+      "router"
+    ]
+  }
+}

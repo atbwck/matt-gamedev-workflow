@@ -1,0 +1,52 @@
+name: Review upstream game skills
+
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: upstream-game-skills
+  cancel-in-progress: false
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: "22"
+      - run: node --test tests/*.test.mjs
+      - run: node sync-upstreams.mjs --update-pins --apply
+      - run: node scripts/catalog.mjs
+      - run: node --test tests/game-content.test.mjs
+      - run: node sync-upstreams.mjs --check
+      - uses: peter-evans/create-pull-request@22a9089034f40e5a961c8808d113e2c98fb63676
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: chore/review-upstream-skills
+          base: ${{ github.event.repository.default_branch }}
+          add-paths: |
+            upstreams.json
+            .distribution.json
+            skills/
+            references/
+            LICENSES/
+            CATALOG.md
+          commit-message: "chore: review pinned upstream game skills"
+          title: "chore: review upstream game skills"
+          body: |
+            Generated from the pinned Matt and awesome-gamedev repositories.
+            Review every changed instruction, source inventory, maturity, resource,
+            license and exact patch. Matt full retention and user-only boundaries apply.
+            Local adapters remain authoritative. A newly added Matt skill requires
+            a reviewed adaptation note; source removals need an explicit local review.
+            No automatic merge, installation, engine run or performance claim.
