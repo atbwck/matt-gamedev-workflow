@@ -8,9 +8,12 @@ import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 import { buildCandidate, publishCandidate, verifyDistribution, syncDistribution, prepareRepositories } from '../lib/distribution.mjs';
 import { installSkills, INSTALL_RECEIPT, verifyInstall } from '../lib/installer.mjs';
-import { digest, fileDigest } from '../lib/files.mjs';
+import { assertNoSymlinks, digest, fileDigest } from '../lib/files.mjs';
 
 const toolingRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+// OS temp paths can contain system aliases (notably on macOS). Resolve the
+// fixture-owned parent once; production paths must still reject linked parents.
+const tempRoot = fs.realpathSync.native(os.tmpdir());
 function put(root, file, text) {
   const target = path.join(root, file);
   fs.mkdirSync(path.dirname(target), { recursive: true });
@@ -18,7 +21,7 @@ function put(root, file, text) {
 }
 function json(root, file) { return JSON.parse(fs.readFileSync(path.join(root, file), 'utf8')); }
 function fixture(t) {
-  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'game-workflow-'));
+  const root = fs.mkdtempSync(path.join(tempRoot, 'game-workflow-'));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   const config = {
     schema: 1,
@@ -59,6 +62,17 @@ function fixture(t) {
   put(root, 'upstream/gamedev/NOTICE', 'Gamedev notice\n');
   return { root, config };
 }
+
+test('fixture temp roots are physical while linked client paths remain forbidden', (t) => {
+  const { root } = fixture(t);
+  const home = tempHome(t);
+  assert.equal(root, fs.realpathSync.native(root));
+  assert.equal(home, fs.realpathSync.native(home));
+  const linked = path.join(home, 'linked-parent');
+  fs.symlinkSync(root, linked, process.platform === 'win32' ? 'junction' : 'dir');
+  assert.throws(() => assertNoSymlinks(linked), /Symlink/);
+  assert.throws(() => assertNoSymlinks(path.join(linked, 'new-client')), /Symlink/);
+});
 
 test('candidate retains all promoted Matt skills/resources, excludes low-use/beta, and preserves patches/licenses/profiles', (t) => {
   const { root } = fixture(t);
@@ -166,7 +180,7 @@ test('patch drift preserves published outputs and proposed pins; publication rol
 test('installer includes all Matt in engine profiles, preserves unrelated paths and verifies receipts', (t) => {
   const { root } = fixture(t);
   publishCandidate({ root, ...buildCandidate({ root }) });
-  const home = fs.mkdtempSync(path.join(os.tmpdir(), 'game-workflow-home-'));
+  const home = fs.mkdtempSync(path.join(tempRoot, 'game-workflow-home-'));
   t.after(() => fs.rmSync(home, { recursive: true, force: true }));
   put(home, '.agents/skills/unrelated/SKILL.md', 'Keep this\n');
   put(home, '.agents/references/game-workflow/unrelated.md', 'Keep this too\n');
@@ -186,7 +200,7 @@ test('installer includes all Matt in engine profiles, preserves unrelated paths 
 });
 
 function tempHome(t) {
-  const home = fs.mkdtempSync(path.join(os.tmpdir(), 'game-workflow-client-'));
+  const home = fs.mkdtempSync(path.join(tempRoot, 'game-workflow-client-'));
   t.after(() => fs.rmSync(home, { recursive: true, force: true }));
   return home;
 }
